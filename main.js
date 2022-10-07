@@ -1,19 +1,76 @@
 const liczba1 = document.querySelector('#liczba1');
-const btnPrzelicz = document.querySelector('#przelicz')
-const wynikiPojemnik = document.querySelector('#wyniki')
-
 const liczba2 = document.querySelector('#liczba2');
 const liczba3 = document.querySelector('#liczba3');
 const liczba4 = document.querySelector('#liczba4');
 
 
-btnPrzelicz.addEventListener('click', () => {
-     
+const btndodajpole = document.querySelector('#dodajinput')
+const wynikiPojemnik = document.querySelector('#wyniki')
+const wynikiPojemnik2 = document.querySelector('#wyniki2')
+const wynikiPojemnik3= document.querySelector('#wyniki3')
+const wynikiPojemnik4 = document.querySelector('#wyniki4')
 
-  wynikiPojemnik.innerHTML = 
-    console.dir(liczba1.value)
-    console.dir(liczba2.value)
-    console.dir(liczba3.value)
-    console.dir(liczba4.value)
+
+
+liczba1.addEventListener('change', function(){przelicz()});
+liczba2.addEventListener('change', function(){przelicz()});
+liczba3.addEventListener('change', function(){przelicz()});
+liczba4.addEventListener('change', function(){przelicz()});
+
+let ileinput = document.getElementsByTagName("input")
+console.log(ileinput)
+
+
+function createinput(){
+  dl = ileinput.length +1
+  let nowyid
+
+  for(let i = 0; i < dl; i++)
+  {
+    let inputt = ileinput[i];
+    nowyid ="liczba" +(i+1);
+    usunid = "usun"+(i+1);
+  }
+
+  const nowyinput = document.createElement("input");
+  nowyinput.type = "number";
+  nowyinput.id = nowyid ;
+ 
+ const parent = document.getElementById("container")
+    parent.appendChild(nowyinput);
+
+    const usun = document.createElement("button");
+    usun.appendChild(document.createTextNode("X"))
+    usun.id = usunid;
+
+    const usunparent = document.getElementById("container")
+    usunparent.appendChild(usun);
+
+    usun.addEventListener("click",() =>{
+      // let par = document.getElementById("container")
+      console.log(nowyid)
+     parent.removeChild(parent.nowyinput)
+    })
+
+    
+}
+
+function przelicz(){
+  sum = +liczba1.value + +liczba2.value + +liczba3.value + +liczba4.value
+  avg = +sum / 4
+  max = Math.max(liczba1.value, liczba2.value, liczba3.value, liczba4.value)
+  min = Math.min(liczba1.value, liczba2.value, liczba3.value, liczba4.value)
+
+ 
+  wynikiPojemnik.innerHTML ="Suma: " + sum; 
+  wynikiPojemnik2.innerHTML ="Średnia: " + avg
+  wynikiPojemnik3.innerHTML = "Maksymalna: "+ max;
+  wynikiPojemnik4.innerHTML ="Minimalna: "+ min; 
+}
+
+
+btndodajpole.addEventListener('click', () => {
+    createinput()
     
 })
+
