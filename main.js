@@ -12,7 +12,7 @@ const wynikiPojemnik4 = document.querySelector('#wyniki4')
 
 
 
-liczba1.addEventListener('change', function(){przelicz()});
+liczba1.addEventListener('change', function(){przelicz() ,policzinputy()});
 liczba2.addEventListener('change', function(){przelicz()});
 liczba3.addEventListener('change', function(){przelicz()});
 // liczba4.addEventListener('change', function(){przelicz()});
@@ -39,12 +39,9 @@ function createinput(){
   const parent = document.getElementById("container")
 
     parent.appendChild(nowyinput);
-
     const usun = document.createElement("button");
     usun.appendChild(document.createTextNode("X"))
     usun.id = usunid;
-
-    // const usunparent = document.getElementById("container")
     parent.appendChild(usun);
 
     usun.addEventListener("click",() =>{
@@ -52,7 +49,8 @@ function createinput(){
       parent.removeChild(usun)
     })
 
-    
+   
+
 }
 
 function przelicz(){
@@ -61,16 +59,43 @@ function przelicz(){
   max = Math.max(liczba1.value, liczba2.value, liczba3.value)
   min = Math.min(liczba1.value, liczba2.value, liczba3.value)
 
- 
+  
   wynikiPojemnik.innerHTML ="Suma: " + sum; 
   wynikiPojemnik2.innerHTML ="Średnia: " + avg
   wynikiPojemnik3.innerHTML = "Maksymalna: "+ max;
   wynikiPojemnik4.innerHTML ="Minimalna: "+ min; 
 }
 
+function policzinputy(){
+  let suma=0;
+  let avgg=0;
+  let numbers= [];
+
+  for(let i =0; i<ileinput.length; i++)
+  {
+    console.log(ileinput[i].id);
+    console.log(ileinput[i].value);
+
+    numbers.push(+ileinput[i].value)
+
+    suma += +ileinput[i].value;
+    avgg = suma/ileinput.length;
+    
+    
+
+  }
+
+  console.log(suma);
+  console.log(avgg);
+  
+ 
+  
+  
+}
 
 btndodajpole.addEventListener('click', () => {
-    createinput()
+    createinput();
+    
     
 })
 
