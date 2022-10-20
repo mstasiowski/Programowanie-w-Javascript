@@ -1,23 +1,52 @@
-const timeoutRef = setTimeout(
-    () => {
-      main.innerHTML='From setTimeout'
-    },
-    2000
-)
+let slides = document.querySelectorAll('.slide');
+let btns = document.querySelectorAll('.btn');
+let currentSlide = 1;
 
-let licznik = 0
 
-const intervalRef = setInterval(
-    () => {
-        main.innerHTML='From interval'+ licznik++
-    },
-    4000
-)
+let manualNav = function(manual){
+  slides.forEach((slide) => {
+    slide.classList.remove('active');
 
-//kasowanie setInterval
-clearInterval(intervalRef)
+    btns.forEach((btn) => {
+      btn.classList.remove('active');
+    });
+  });
 
-//kasowanie setTimeout
-clearTimeout(intervalRef)
+  slides[manual].classList.add('active');
+  btns[manual].classList.add('active');
+}
 
-//window.requestAnimationFrame
+btns.forEach((btn, i) => {
+  btn.addEventListener("click", () => {
+    manualNav(i);
+    currentSlide = i;
+  });
+});
+
+
+var repeat = function(activeClass){
+  let active = document.getElementsByClassName('active');
+  let i = 1;
+
+  var repeater = () => {
+    setTimeout(function(){
+      [...active].forEach((activeSlide) => {
+        activeSlide.classList.remove('active');
+      });
+
+    slides[i].classList.add('active');
+    btns[i].classList.add('active');
+    i++;
+
+    if(slides.length == i){
+      i = 0;
+    }
+    if(i >= slides.length){
+      return;
+    }
+    repeater();
+  }, 6000);
+  }
+  repeater();
+}
+repeat();
