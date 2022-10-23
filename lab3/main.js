@@ -1,19 +1,29 @@
 document.addEventListener('keypress', onKeyPress)
 
-const Sounds = {
-    'clap':'clap',
-    'clap2':'clap2'
-}
+// const Sounds = {
+//     'clap':'clap',
+//     'hithat':'hithat'
+// }
+
 
 const KeyToSound = {
     'a': 'clap',
-    's': 'clap2',
+    's': 'hithat',
+    'd': 'kick',
+    'f': 'openhat',
+    'g': 'boom',
+    'h': 'ride',
+    'j': 'snare',
+    'k': 'tom',
+    'l': 'tink',
 }
 
 function onKeyPress(ev){
-   // const key = event.key
-    // logika mapowania key -> sound 
-  // switch
+ const  sound = KeyToSound[ev.key]
+
+//    const key = event.key
+//     logika mapowania key -> sound 
+//   switch
 // switch (ev.key) {
 //     case 'a':
 //     //clap
@@ -26,19 +36,18 @@ function onKeyPress(ev){
 //     break;
 // }
 //   const sound = "clap"
-
-const sound = KeyToSound[ev.key]
   playSound(sound)
 }
 
 
 
 
-function playSound(event) {
+function playSound(sound) {
     if(!sound){
-        return
+        return 
     }
-  const audioTag = document.querySelector('#${clap}')
+    console.log(sound)
+  const audioTag = document.querySelector(`#${sound}`);
   audioTag.currentTime = 0
   audioTag.play()
 }
