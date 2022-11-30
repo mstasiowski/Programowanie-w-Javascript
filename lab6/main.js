@@ -1,26 +1,30 @@
-//window.addEventListener('deviceorientation', onDeviceMove)
+// window.addEventListener('deviceorientation', onDeviceMove)
 let ball = document.querySelector('#ball');
 let  hole =document.querySelector('#hole');
+let game = document.querySelector('#startgame');
 let map = document.querySelector('#map');
+let menu = document.querySelector('#menu');
 
+let hourDigit = document.querySelector('#hour');
+let minuteDigit = document.querySelector('#minute');
+let secondDigit = document.querySelector('#second');
 
 const MaxX = map.clientWidth - ball.clientWidth;
 const MaxY = map.clientHeight - ball.clientHeight;
+
+console.log(`map size X :${MaxX}`);
+console.log(`map size Y: ${MaxY}`);
+
+
 // function onDeviceMove(event) {
 //     console.log(event)
-    
 // }
 
-
-
-
-
-function animate() {
-       //console.log(Date.now())
-    requestAnimationFrame(animate)
-}
-
-requestAnimationFrame(animate)
+// function animate() { 
+//     console.log(Date.now())
+//     requestAnimationFrame(animate)      
+// }
+// requestAnimationFrame(animate)
 
 
 let SpeedX = 0;
@@ -29,67 +33,241 @@ let positionX = 350;
 let positionY = 380;
 
 
+let hour = 0;
+let minute = 0;
+let second = 0;
+let millisecond = 0;
+let cron;
 
-window.addEventListener('deviceorientation', (move)=>{
+let bestTime = [];
 
+
+let bestTimeList = document.createElement('ul');
+menu.appendChild(bestTimeList);
+
+
+
+let startgame = false;
+
+
+window.addEventListener('deviceorientation', BallSpeed)
        
-
-        
-
-
-
-  console.log(`map size X :${MaxX}`);
-  console.log(`map size Y: ${MaxY}`);
-
-   SpeedX = move.gamma/45;
-   SpeedY = move.beta/45;
-
-   
+function BallSpeed(move){
+   SpeedX = move.gamma /45;
+   SpeedY = move.beta /45;
+   //console.log(SpeedX);
+   //console.log(SpeedY);
+}
 
 
+function BallMove(){
 
-    
-   if(positionX + SpeedX >0)
+   if(startgame == true)
    {
-        
 
-    if(positionX> MaxX && positionX != 740)
-    {
-        console.log("colision X");
-        ball.style.left = `${(MaxX * positionX) / 750 - 10}px`;
-        
-    }else
-    {
-        positionX= positionX +SpeedX;
-        ball.style.left = `${positionX}px`;
-    }
+      if(positionX<MaxX)
+   {
+         if(positionX<0)
+         {
+          positionX = positionX + 1;
+         }else{
 
-    
+            positionX= positionX + SpeedX;
+            ball.style.left = `${positionX}px`;
+         }
+
+      
+   }else
+   {
+      positionX = positionX-1;
    }
 
-   if(positionY + SpeedY >0)
+   if(positionY<MaxY)
    {
+            if(positionY<0)
+            {
+               positionY = positionY + 1;
+            }else
+            {
+               positionY= positionY + SpeedY;
+               ball.style.top = `${positionY}px`;
+            }
+
+      
+   }else
+   {
+      positionY = positionY - 1;
+   }
+
+   collisionDetection();
+      
+window.requestAnimationFrame(BallMove);
 
 
-    if(positionY> MaxY  && positionY != 840)
-        {
-            console.log("colision Y");
-            ball.style.top = `${(MaxY * positionY) / 850 - 10}px`;
-            
 
-        }else
-        {
-            positionY= positionY +SpeedY;
-            ball.style.top = `${positionY}px`;
 
-        }
+   }
+
+   
+   
+}
+
+
+
+game.addEventListener('click',start)
+
+function start(){
+   startgame = true;
+   positionX = 350;
+   positionY = 380;
+   resetTimer();
+
+   startTimer();
+   BallMove();
+
+   
+   while (bestTimeList.firstChild) 
+   {
+     bestTimeList.removeChild(bestTimeList.firstChild);
+   }
+   
+}
+
+function endGame(){
+   
+   startgame = false;
+   stopTimer();
+   
+   console.log(`hour:${hour} minute:${minute} second:${second}`);
+   saveBestTime();
+   
+  
+ 
+   bestTime.forEach(e=>{
+      
+         let TimeList = document.createElement('li');
+         TimeList.innerText=`${e[0]}:${e[1]}:${e[2]}`;
+         bestTimeList.appendChild(TimeList);
+                                     
+  })
+
+  
+   
+}
+
+
+
+function startTimer(){
+   
+   stopTimer();
+   cron = setInterval(() => {timer();},10)
+}
+
+function stopTimer(){
+   
+   clearInterval(cron);
+}
+
+function resetTimer(){
+   hour = 0;
+   minute = 0;
+   second = 0;
+   millisecond = 0;
+
+   hourDigit.innerHTML ='00:';
+   minuteDigit.innerHTML ='00:';
+   secondDigit.innerHTML ='00';
+}
+
+
+function timer(){ 
+
+if((millisecond +=10) ==1000){
+      
+   millisecond = 0;
+   second++;
+}
+
+if(second == 60)
+{
+   second = 0;
+   minute++;
+}
+
+if(minute == 60)
+{
+   minute = 0;
+   hour++;
+}
+
+hourDigit.innerHTML = returnTimerData(hour);
+minuteDigit.innerHTML = returnTimerData(minute);
+secondDigit.innerHTML = returnTimerData(second);
+}
+
+function returnTimerData(input) {
+
+   if(input >=10)
+   {
+      return input;
+   }else if(input == second)
+   {
+      return `0${input}`;
+   }else
+   {
+      return `0${input}:`
+   }
+   
+ }
+
+
+ function collisionDetection(){
+   let holeCord = hole.getBoundingClientRect();
+   let ballCord = ball.getBoundingClientRect();
+
+   // console.log(`BallCordLeft: ${ballCord.left} + BallCordWidth${ballCord.width}`);
+   // console.log(`BallCordTop: ${ballCord.top} + BallCordHeight${ballCord.height}`);
+   // console.log(`HoleCordLeft: ${holeCord.left} + HallCordWidth${holeCord.width}`);
+   // console.log(`HoleCordTop: ${holeCord.top} + HallCordHeight${holeCord.height}`);
+
+   if(ballCord.left < (holeCord.left+ holeCord.width)-20 && ballCord.left + ballCord.width > holeCord.left +20 &&
+   ballCord.top < (holeCord.top + holeCord.height)-20 && ballCord.top + ballCord.height > holeCord.top + 20) 
+   {
+      
+      hole.style.backgroundColor="red";
+      endGame();  
+
+   } else
+   hole.style.backgroundColor="black";
+
+
+ }
+
+ function saveBestTime(){
+
+   bestTime.push([hour,minute,second]);
+
+ }
 
  
-   }
-    
+
+
+
+
+
+
+
+
+      
+
+
    
-   
     
-})
+
+
+
+
+
+
 
 
