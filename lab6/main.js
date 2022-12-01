@@ -1,9 +1,11 @@
 // window.addEventListener('deviceorientation', onDeviceMove)
 let ball = document.querySelector('#ball');
-let  hole =document.querySelector('#hole');
+let hole =document.querySelector('#hole');
 let game = document.querySelector('#startgame');
 let map = document.querySelector('#map');
 let menu = document.querySelector('#menu');
+let timeListDiv = document.querySelector('#timeListDiv');
+
 
 let hourDigit = document.querySelector('#hour');
 let minuteDigit = document.querySelector('#minute');
@@ -25,7 +27,12 @@ console.log(`map size Y: ${MaxY}`);
 //     requestAnimationFrame(animate)      
 // }
 // requestAnimationFrame(animate)
+function getRandomNum(min, max) {
+   return Math.random() * (max - min) + min;
+ }
 
+
+ 
 
 let SpeedX = 0;
 let SpeedY = 0;
@@ -42,8 +49,9 @@ let cron;
 let bestTime = [];
 
 
-let bestTimeList = document.createElement('ul');
-menu.appendChild(bestTimeList);
+let bestTimeList = document.createElement('ol');
+bestTimeList.classList ="bestTimeList";
+timeListDiv.appendChild(bestTimeList);
 
 
 
@@ -103,13 +111,8 @@ function BallMove(){
       
 window.requestAnimationFrame(BallMove);
 
+   }  
 
-
-
-   }
-
-   
-   
 }
 
 
@@ -120,10 +123,20 @@ function start(){
    startgame = true;
    positionX = 350;
    positionY = 380;
+
+ 
+   hole.style.left=getRandomNum(0,730)+"px";
+   hole.style.top=getRandomNum(0,830)+"px";
+
+
+   
+
    resetTimer();
 
    startTimer();
    BallMove();
+
+   
 
    
    while (bestTimeList.firstChild) 
@@ -138,21 +151,19 @@ function endGame(){
    startgame = false;
    stopTimer();
    
-   console.log(`hour:${hour} minute:${minute} second:${second}`);
+   console.log(`Your time: hour:${hour} minute:${minute} second:${second}`);
    saveBestTime();
    
-  
- 
+   
    bestTime.forEach(e=>{
-      
+         
          let TimeList = document.createElement('li');
+         TimeList.className ="bestTimeListLi";
          TimeList.innerText=`${e[0]}:${e[1]}:${e[2]}`;
          bestTimeList.appendChild(TimeList);
                                      
   })
-
   
-   
 }
 
 
@@ -225,20 +236,22 @@ function returnTimerData(input) {
    let holeCord = hole.getBoundingClientRect();
    let ballCord = ball.getBoundingClientRect();
 
-   // console.log(`BallCordLeft: ${ballCord.left} + BallCordWidth${ballCord.width}`);
-   // console.log(`BallCordTop: ${ballCord.top} + BallCordHeight${ballCord.height}`);
-   // console.log(`HoleCordLeft: ${holeCord.left} + HallCordWidth${holeCord.width}`);
-   // console.log(`HoleCordTop: ${holeCord.top} + HallCordHeight${holeCord.height}`);
+   // console.log(`BallCordLeft: ${ballCord.left} + BallCordWidth: ${ballCord.width}`);
+   // console.log(`BallCordTop: ${ballCord.top} + BallCordHeight: ${ballCord.height}`);
+   // console.log(`HoleCordLeft: ${holeCord.left} + HallCordWidth: ${holeCord.width}`);
+   // console.log(`HoleCordTop: ${holeCord.top} + HallCordHeight: ${holeCord.height}`);
 
    if(ballCord.left < (holeCord.left+ holeCord.width)-20 && ballCord.left + ballCord.width > holeCord.left +20 &&
    ballCord.top < (holeCord.top + holeCord.height)-20 && ballCord.top + ballCord.height > holeCord.top + 20) 
    {
       
-      hole.style.backgroundColor="red";
+      hole.style.backgroundColor="rgb(30, 156, 30)";
       endGame();  
 
    } else
-   hole.style.backgroundColor="black";
+   hole.style.backgroundColor="rgba(37, 37, 37, 0.973)";
+   
+   
 
 
  }
