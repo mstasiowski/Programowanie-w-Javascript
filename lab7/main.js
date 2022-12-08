@@ -9,8 +9,12 @@ function draw() {
     if (canvas.getContext) {
       const ctx = canvas.getContext('2d');
   
-      ctx.fillRect(25, 25, 5, 0);
-      ctx.clearRect(45, 45, 60, 60);
-      ctx.strokeRect(50, 50, 50, 50);
+      // ctx.fillRect(25, 25, 150, 150);
+      // ctx.strokeRect(50, 50, 50, 50);
+      // ctx.clearRect(45, 45, 80, 80);
+      ctx.beginPath();
+      ctx.arc(250,150,15,0,2*Math.PI);
+      ctx.stroke();
+      ctx.fill();
     }
   }
