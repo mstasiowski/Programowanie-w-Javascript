@@ -85,7 +85,30 @@ class Ball {
 
 }
 
+class Line {
+  constructor(moveToX,moveToY,lineToX,lineToY){
+    this.moveToX = moveToX;
+    this.moveToY = moveToY;
+    this.lineToX = lineToX;
+    this.lineToY = lineToY;
+  }
+
+  draw(context){
+    context.beginPath();
+    context.moveTo(this.moveToX,this.moveToY);
+    context.lineTo(this.lineToX,this.lineToY);
+    context.lineTo(this.lineToX,this.lineToY);
+    context.closePath();
+    context.stroke();
+  }
+
+  move(){
+    this.draw(context);
+  }
+}
+
 let balls =[];
+let lines =[];
 
 // let createBall = function(ball)
 // {
@@ -101,6 +124,8 @@ let RandomNumMinMax = function(min,max)
 for(let i = 0 ;i<10;i++)
 {
   
+
+  
   let random_radius = randomNum();
   // let random_xpos = Math.random() * window_width;
   // let random_ypos = Math.random() * window_height;
@@ -109,6 +134,10 @@ for(let i = 0 ;i<10;i++)
 
   let balltest = new Ball(random_xpos, random_ypos, random_radius, 1);
   balls.push(balltest);
+
+  let lineTest = new Line(RandomNumMinMax(20,500),RandomNumMinMax(20,500),random_xpos,random_ypos);
+  lines.push(lineTest);
+  
   
 }
 
@@ -119,11 +148,26 @@ function moveBall(){
 balls.forEach(e =>{
   e.move();
 })
-  
+
+
 
 }
 
-moveBall();
+function moveLine(){
+  requestAnimationFrame(moveLine);
+  context.clearRect(0, 0, window_width, window_height)
+
+  lines.forEach(l =>{
+    l.move();
+  })
+}
+
+// lineTest.move();
+
+
+// moveBall();
+moveLine();
+
 
 
 
