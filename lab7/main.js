@@ -323,8 +323,7 @@ canvas.addEventListener('mousemove',(e)=>{
     
   })  
 
- //TODO klikniecie konkretnej kuli a następnie usunięcie jej z tablicy 
-  //     //? Wyznaczenie punktów do stworzenia kwadratu lub prostokąta do kliknięcia?
+
 
 
   const getCursorPosition = (canvas, event) => {
