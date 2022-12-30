@@ -1,4 +1,56 @@
 *{
     margin: 0;
     border: 0;
+    background-color:#F5F5DC;
+}
+#container
+{
+height: 100%;
+width: 100%;
+position: relative;
+
+}
+
+#canvas
+{
+position: absolute;
+}
+
+#start{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 150px;
+    height: 70px;
+    font-size: 20px;
+    font-weight: 500;
+    color:#F5F5DC;
+}
+
+#resetbtn
+{
+position: absolute;
+left: 10px;
+top: 30px;
+font-size: 14px;
+font-weight: 600;
+display: none;
+color: black;
+}
+
+.btn
+{
+    border: none;
+    border-radius: 10px;
+    background-color: #82CD47;
+    padding: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+    
+}
+
+.btn:hover
+{
+cursor: pointer;
+background-color: #54B435;
 }

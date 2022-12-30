@@ -1,3 +1,14 @@
+const startbtn = document.querySelector('#start');
+const resetbtn = document.querySelector('#resetbtn');
+
+startbtn.addEventListener('click',startGame)
+resetbtn.addEventListener('click',startGame)
+
+function startGame(){
+  startbtn.style.display = "none";
+  resetbtn.style.display = "block";
+
+
 const canvas = document.querySelector('#canvas');
 const context = canvas.getContext('2d');
 
@@ -8,9 +19,9 @@ canvas.height = window_height;
 canvas.width = window_width;
 
 canvas.style.background ="rgba(10, 20, 0, 0.35)";
-ballsCount = 15;
-ballMinSpeed = 1;
-ballMaxSpeed = 10;
+ballsCount = 10;
+ballMinSpeed = 2;
+ballMaxSpeed = 8;
 
 console.log(`Height: ${window_height}`);
 console.log(`Width: ${window_width}`);
@@ -136,7 +147,7 @@ for(let i = 0 ;i<ballsCount ;i++)
 
   let balltest = new Ball(random_xpos, random_ypos, random_radius, random_speed,color = `rgb(${RandomNumMinMax(0,255)},${RandomNumMinMax(0,255)},${RandomNumMinMax(0,255)})`);
   balls.push(balltest);
-  console.log(balltest.xpos);
+  // console.log(balltest.xpos);
 
 }
 
@@ -161,7 +172,7 @@ balls.forEach(e =>{
 
 
 
-console.log(balls)
+// console.log(balls)
 
 function lineCheck()
 {
@@ -334,7 +345,7 @@ canvas.addEventListener('mousemove',(e)=>{
 
       // console.log("Ball X "+balls[i].xpos);
       // console.log("Ball Y "+balls[i].ypos);
-      console.log("Ball radius "+balls[i].radius)
+      // console.log("Ball radius "+balls[i].radius)
       // console.log("Ball X xpos - radius "+ (balls[i].xpos- balls[i].radius))
       // console.log("Ball X xpos + radius "+ (balls[i].xpos+ balls[i].radius))
       // console.log("Ball Y ypos - radius "+ (balls[i].ypos- balls[i].radius))
@@ -342,10 +353,9 @@ canvas.addEventListener('mousemove',(e)=>{
 
       if(x>(balls[i].xpos - balls[i].radius) && x<(balls[i].xpos + balls[i].radius) && y > (balls[i].ypos - balls[i].radius) && y < (balls[i].ypos + balls[i].radius))
       {
-        console.log("git")
-      console.log("");
+      
       balls.splice(i,1)
-      console.log(balls);
+    
      
       for(let i =0;i<2;i++)
       {
@@ -363,3 +373,5 @@ canvas.addEventListener('mousemove',(e)=>{
   canvas.addEventListener('mousedown', (e) => {
     getCursorPosition(canvas, e)
   })
+
+}
