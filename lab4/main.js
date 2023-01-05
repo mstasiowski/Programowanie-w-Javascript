@@ -21,6 +21,9 @@ const container = document.querySelector("#container");
 
 
 
+
+
+
 Btn.addEventListener("click",()=> 
 {
     addNote()
@@ -29,7 +32,8 @@ Btn.addEventListener("click",()=>
 const saveNotes = () => {
     const notes = document.querySelectorAll(".note textarea");
     const pin = document.querySelectorAll(".pin");
-    
+    const notes2 = document.querySelectorAll(".note");
+    const pinned = document.querySelectorAll(".pinned");
   
     
     const data = [];
@@ -53,10 +57,15 @@ const saveNotes = () => {
             {
                 pinValue = true;
                 pinCheck.push(pinValue);
+                notes2[i].classList.add("pinned");
+                
+
             }else
             {
                 pinValue = false;
                 pinCheck.push(pinValue);
+                notes2[i].classList.remove("pinned");
+                
             }
             // console.log("Note "+i+" "+pinValue);
 
@@ -268,11 +277,34 @@ const addNote = (textTitle="", text = "", color="#FFE15D", pinCheck) => {
             saveNotes();
         }
     )
+     //! ---------------------------------------------------------------------
+     
+    //    console.log(localStorageNotesP);
+    //    for(let i=0;i<localStorageNotesP.length;i++)
+    //    {
+
+    //     if(pinCheck == localStorageNotesP[i])
+    //    {
+    //     if(pinCheck !=true)
+    //     {
+    //         console.log("meh");
+            
+    //     }else
+    //     {
+    //         console.log(`Note${i} found`)
+            
+    //     }
+
+    //    }
 
 
+    //    }
+     
+       
+    
+        //! -------------------------------------------------------------------------
     container.appendChild(note);
     saveNotes()
-    
 }
 
 
@@ -299,10 +331,14 @@ function showNotes(){
             j++;
         }
       
+        
         addNote(localStorageNotes[i],localStorageNotes[i+1],localStorageNotesColors[j],localStorageNotesPins[j])
-        console.log(localStorageNotes[i]);
-        console.log(localStorageNotesColors[j]);
-        console.log(localStorageNotesPins[j]);
+        // console.log(localStorageNotes[i]);
+        // console.log(localStorageNotesColors[j]);
+        // console.log(localStorageNotesPins[j]);
+
+        
+
         
        }
 
