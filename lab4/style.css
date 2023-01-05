@@ -33,7 +33,7 @@
 .note {
     width: 400px;
     height: 400px;
-    background-color: #FFE15D;
+    /* background-color: #FFE15D; */
     margin: 15px;
     margin-top: 55px;
 }
@@ -51,6 +51,86 @@
     padding: 5px;
     cursor: pointer;
 }
+
+.colorPickerMenu {
+display: flex;
+flex-direction: row;
+
+}
+
+.colorDivContainer
+{
+display: none;
+flex-direction: row;
+align-items: center;
+gap: 2px;
+
+
+}
+
+.colorDiv
+{
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    
+}
+
+.colorDiv:hover
+{
+cursor: pointer;
+}
+
+#ColorDivDefault
+{
+    background-color: #FFE15D;
+}
+
+#ColorDivRed
+{
+    background-color: #E97777;  
+}
+
+#ColorDivGreen
+{
+    background-color: #B6E2A1;   
+}
+
+#ColorDivBlue
+{
+    background-color: #B8E8FC; 
+}
+
+#ColorDivPurple
+{
+    background-color: #B1AFFF; 
+}
+
+
+
+.note .title
+{
+    width: 100%;
+    height: 25px;
+    padding: 4px;
+    font-size: 15px;
+    border: none;
+    resize: none;
+    background-color: #3e4040;
+    font-family:Georgia, 'Times New Roman', Times, serif;  
+    color: rgb(207, 206, 206);
+    font-style: italic;
+    
+    
+    
+}
+
+.note .title:focus {
+    border: 0;
+    outline: 0;
+}
+
+
 
 .note textarea {
     width: 100%;
