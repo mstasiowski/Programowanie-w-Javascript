@@ -6,7 +6,7 @@
 // let createTime = Date;
 
 //// SHOW SAVED NOTE FROM LOCAL STORAGE
-//TODO ADD PIN (BOOLEAN) TO MOVE NOTE IN THE TOP OF THE PAGE
+//// ADD PIN (BOOLEAN) TO MOVE NOTE IN THE TOP OF THE PAGE
 //TODO ADD CREATE TIME TO NOTE
 //? HOW TO REMOVE A AWFUL VERTICAL SCROLL BARS WHEN THERE IS TOO MUCH TEXT IN TITLE
 //// HOW TO ADD COLOR TO LOCAL STORAGE
@@ -33,12 +33,13 @@ const saveNotes = () => {
     const notes = document.querySelectorAll(".note textarea");
     const pin = document.querySelectorAll(".pin");
     const notes2 = document.querySelectorAll(".note");
-    const pinned = document.querySelectorAll(".pinned");
+    const timeStamp = document.querySelectorAll(".timeStamp");
   
     
     const data = [];
     const colorsData = [];
     const pinCheck = []; 
+    const timeStampData = [];
     
     notes.forEach(
             (note) => {
@@ -67,8 +68,9 @@ const saveNotes = () => {
                 notes2[i].classList.remove("pinned");
                 
             }
-            // console.log("Note "+i+" "+pinValue);
-
+            
+            timeStampData.push(timeStamp[i].innerHTML)
+            
            
         }
        
@@ -80,18 +82,20 @@ const saveNotes = () => {
         localStorage.removeItem("notes");
         localStorage.removeItem("notesColors");
         localStorage.removeItem("notesPins");
+        localStorage.removeItem("notesTimeStamps");
         
     } else {
         localStorage.setItem("notes", JSON.stringify(data));
         localStorage.setItem("notesColors", JSON.stringify(colorsData));
         localStorage.setItem("notesPins", JSON.stringify(pinCheck));
+        localStorage.setItem("notesTimeStamps", JSON.stringify(timeStampData));
     }
 }
 
 
-const addNote = (textTitle="", text = "", color="#FFE15D", pinCheck) => {
+const addNote = (textTitle="", text = "", color="#FFE15D", pinCheck, timeStamp= new Date().toLocaleDateString('pl-PL',{ weekday: 'long', hour: 'numeric', minute: 'numeric', year: 'numeric', month: 'long', day: 'numeric', second: 'numeric'})) => {
     const note = document.createElement("div");
-    
+    // let timeStamp = new Date().toLocaleDateString('pl-PL',{ weekday: 'long', hour: 'numeric', minute: 'numeric', year: 'numeric', month: 'long', day: 'numeric', second: 'numeric'});
     note.classList.add("note")
     note.innerHTML = `
     <div class="tool">
@@ -117,7 +121,7 @@ const addNote = (textTitle="", text = "", color="#FFE15D", pinCheck) => {
          <i class="trash fas fa-trash" style="color:white"></i> 
     </div>
     <textarea class="noteText" spellcheck="false" style="background-color: ${color};">${text}</textarea>
-    
+    <div class="timeStamp">${timeStamp}</div>
     `;
 
     let pin = note.querySelector(".pin");
@@ -141,10 +145,14 @@ const addNote = (textTitle="", text = "", color="#FFE15D", pinCheck) => {
             {
                 menu.style.display = "none"
                 palleteIcon.style.color ="white";
+
+                
+
             }else
             {
                 menu.style.display ="flex";
                 palleteIcon.style.color =`${color}`;
+
             }
          
             
@@ -218,6 +226,9 @@ const addNote = (textTitle="", text = "", color="#FFE15D", pinCheck) => {
         }
     )
 
+    
+
+
     note.querySelector(".trash").addEventListener(
         "click",
         function() {
@@ -277,32 +288,7 @@ const addNote = (textTitle="", text = "", color="#FFE15D", pinCheck) => {
             saveNotes();
         }
     )
-     //! ---------------------------------------------------------------------
      
-    //    console.log(localStorageNotesP);
-    //    for(let i=0;i<localStorageNotesP.length;i++)
-    //    {
-
-    //     if(pinCheck == localStorageNotesP[i])
-    //    {
-    //     if(pinCheck !=true)
-    //     {
-    //         console.log("meh");
-            
-    //     }else
-    //     {
-    //         console.log(`Note${i} found`)
-            
-    //     }
-
-    //    }
-
-
-    //    }
-     
-       
-    
-        //! -------------------------------------------------------------------------
     container.appendChild(note);
     saveNotes()
 }
@@ -313,6 +299,7 @@ function showNotes(){
     const localStorageNotes = JSON.parse(localStorage.getItem("notes"));
     const localStorageNotesColors = JSON.parse(localStorage.getItem("notesColors"));
     const localStorageNotesPins = JSON.parse(localStorage.getItem("notesPins"));
+    const localStorageNotesTimeStamps = JSON.parse(localStorage.getItem("notesTimeStamps"));
 
     if(localStorageNotes === null)
     {
@@ -332,7 +319,7 @@ function showNotes(){
         }
       
         
-        addNote(localStorageNotes[i],localStorageNotes[i+1],localStorageNotesColors[j],localStorageNotesPins[j])
+        addNote(localStorageNotes[i],localStorageNotes[i+1],localStorageNotesColors[j],localStorageNotesPins[j],localStorageNotesTimeStamps[j])
         // console.log(localStorageNotes[i]);
         // console.log(localStorageNotesColors[j]);
         // console.log(localStorageNotesPins[j]);

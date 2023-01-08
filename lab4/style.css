@@ -165,3 +165,13 @@ cursor: pointer;
     border: 0;
     outline: 0;
 }
+
+.note .timeStamp
+{
+    color: rgba(0, 0, 0, 0.395);
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 500;
+    
+}
