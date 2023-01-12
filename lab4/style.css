@@ -173,5 +173,6 @@ cursor: pointer;
     font-size: 14px;
     text-align: center;
     font-weight: 500;
-    
+    cursor: default;
+    user-select: none;
 }

@@ -1,0 +1,152 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+main {
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: 50px;
+    background-color:#69a5e1;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+#tools{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    height: 10vh;
+    align-items: center;
+    gap: 5px;
+    
+}
+#btn {
+    /* position: fixed; */
+    /* right: 240px; */
+    /* top: 20px; */
+    background-color: rgba(0, 0, 0, 0.229);
+    color: rgba(0, 0, 0, 0.49);
+    padding: 10px;
+    border: 0;
+    outline: 0;
+    border-radius: 25px;
+    /* height: 48.89px; */
+    height: 40px;
+    font-size: 15px;
+}
+
+#btn:hover
+{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.403);
+}
+
+::placeholder{
+    color: rgba(0, 0, 0, 0.49);
+    text-align: center;
+}
+
+#search{
+    font-size: 25px;
+    padding: 10px;
+    border-radius: 25px;
+    outline: none;
+    border: none;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.229);
+    /* position: absolute; */
+    /* top: 20px; */
+    /* left: 50%; */
+}
+
+#search:hover{
+    background-color: rgba(0, 0, 0, 0.403);
+}
+
+
+#container{
+    display: flex;
+    gap: 30px;
+    padding: 10px;
+    flex-wrap: wrap;    
+}
+
+.weather{
+    width: 250px;
+    height: 260px;
+    background-color: rgba(0, 0, 0, 0.229);
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 5px 8px 20px 0.5px rgba(0, 0, 0, 0.522);
+    user-select: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+.topic{
+    display: flex;
+    /* align-items: center; */
+}
+
+.city{
+  font-size: 25px;
+  font-weight: 400;
+  /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
+  flex-grow: 2;
+  
+}
+
+.closeBtn{
+flex-grow: 1;
+position: relative;
+top: 16px;
+left: 62px;
+color: black;
+height: 12.5px;
+}
+
+.closeBtn:hover{
+    cursor: pointer;
+}
+
+.desc{
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.icon_and_temp{
+    display: flex;
+    align-items: center;
+}
+
+.temp{
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.temp_min{
+   
+}
+
+.temp_max{
+   
+}
+
+.feels_like{
+    
+}
+
+.humidity{
+    
+}
+
+.wind_speed{
+    
+}
