@@ -1,8 +1,10 @@
 let slides = document.querySelectorAll('.slide');
 let btns = document.querySelectorAll('.btn');
+let arrLeft =document.querySelector('.arr-left');
+let arrRight =document.querySelector('.arr-right');
 let currentSlide = 1;
 
-
+//dots
 let manualNav = function(manual){
   slides.forEach((slide) => {
     slide.classList.remove('active');
@@ -24,10 +26,44 @@ btns.forEach((btn, i) => {
 });
 
 
+
 var repeat = function(activeClass){
   let active = document.getElementsByClassName('active');
   let i = 1;
 
+arrLeft.addEventListener("click",()=>{
+  slides.forEach((s)=>{
+    s.classList.remove('active');
+  })
+
+  if(i==0)
+  {
+    i = 4;
+  }else
+  {
+    i--;
+  }
+
+  slides[i].classList.add('active');
+console.log(i)
+})
+
+arrRight.addEventListener("click",()=>{
+  slides.forEach((s)=>{
+    s.classList.remove('active');
+  })
+
+  if(i==4)
+  {
+    i = 0;
+  }else
+  {
+    i++;
+  }
+
+  slides[i].classList.add('active');
+})
+  
   var repeater = () => {
     setTimeout(function(){
       [...active].forEach((activeSlide) => {
@@ -38,6 +74,7 @@ var repeat = function(activeClass){
     btns[i].classList.add('active');
     i++;
 
+
     if(slides.length == i){
       i = 0;
     }
@@ -45,8 +82,10 @@ var repeat = function(activeClass){
       return;
     }
     repeater();
-  }, 6000);
-  }
+  }, 5000)};
+
   repeater();
-}
+};
+
+
 repeat();
