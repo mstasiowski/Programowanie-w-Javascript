@@ -1,6 +1,7 @@
 //TODO Prezentuje pogodę z róznych miejsc na świecie (temp, wilgotność, odpowiednia grafika względem pogody(chmurki, sloneczko, itp.))
 //TODO Wskazane przez usera miejsca powinny byc zapamiętane (localStorage), pogoda pobierana na nowo przy każdym wejściu do aplikacji.
 //TODO Można dodać/usunąć do 10 miejsc 
+//! USTAWIĆ ALERT JAK KTOŚ PODA BŁĘDNE MIASTO
 
 const API_KEY = `907faf56db9342f237f4d1acebd67c0e`;
 const API_URL = `https://api.openweathermap.org/data/2.5/weather?&appid=${API_KEY}&units=metric`;
@@ -175,10 +176,4 @@ function searchCity(){
 
 // c1.getWeather();
 search.value = "";
-
-
-}
-
-function deleteCart(){
-
 }

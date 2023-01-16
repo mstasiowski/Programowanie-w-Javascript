@@ -98,13 +98,13 @@ main {
 .city{
   font-size: 25px;
   font-weight: 400;
-  /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
-  flex-grow: 2;
+
+  /* flex-grow: 2; */
   
 }
 
 .closeBtn{
-flex-grow: 1;
+/* flex-grow: 1; */
 position: relative;
 top: 16px;
 left: 62px;
