@@ -45,7 +45,7 @@ arrLeft.addEventListener("click",()=>{
   }
 
   slides[i].classList.add('active');
-console.log(i)
+
 })
 
 arrRight.addEventListener("click",()=>{
@@ -82,7 +82,7 @@ arrRight.addEventListener("click",()=>{
       return;
     }
     repeater();
-  }, 5000)};
+  }, 10000)};
 
   repeater();
 };
