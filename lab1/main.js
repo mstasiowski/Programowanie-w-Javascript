@@ -63,7 +63,7 @@ function przelicz(){
   // wynikiPojemnik4.innerHTML ="Minimalna: "+ min; 
 
   num  =[];
-  let summary = 0;
+  let sum = 0;
 
 
   for(let i =0;i<ileinput.length;i++)
@@ -71,7 +71,7 @@ function przelicz(){
     num.push(ileinput[i].value)
   }
   
-    console.log(num)
+    // console.log(num)
   let max = Math.max(...num);
   let min = Math.min(...num);
   let numMap = num.map(s =>{ return Number(s)});
@@ -80,10 +80,10 @@ function przelicz(){
   let avg = sum/howmanyvalues;
 
 
-  console.log(`Sum value is : ${sum}`);
-  console.log(`Avg value is : ${avg}`);
-  console.log(`Max value is : ${max}`);
-  console.log(`Min value is : ${min}`);
+  // console.log(`Sum value is : ${sum}`);
+  // console.log(`Avg value is : ${avg}`);
+  // console.log(`Max value is : ${max}`);
+  // console.log(`Min value is : ${min}`);
 
   wynikiPojemnik.innerHTML ="Suma: " + sum; 
   wynikiPojemnik2.innerHTML ="Średnia: " + avg
