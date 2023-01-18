@@ -1,0 +1,23 @@
+/* body{
+    margin: 0;
+    padding: 0;
+} */
+
+#container{
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+
+#container2{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#dodajinput{
+position: relative;
+top: 20px;
+}
