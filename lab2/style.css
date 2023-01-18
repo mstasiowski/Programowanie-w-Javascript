@@ -97,7 +97,7 @@ color:rgba(0, 0, 0, 1);
 
 .img-slider .active{
     clip-path: circle(142% at 0 100%);
-    transition: 1s;
+    transition: 0.5s;
 
     
 }
