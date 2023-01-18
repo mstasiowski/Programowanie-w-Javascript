@@ -31,26 +31,42 @@ btns.forEach((btn, i) => {
   });
 });
 
+// slides.forEach((s)=>{
+
+// s.addEventListener('mouseover',()=>{
+//   console.log(i)
+// })
+
+// })
+
+
 
 
 //*ARROWS
 arrLeft.addEventListener("click",()=>{
-  let x = 0;
 
-  slides.forEach((s)=>{
-    s.classList.remove('active');
-  })
+
+slides.forEach((s)=>{
+  s.classList.remove('active');
+})
+
+
  
-  if(i !=0)
-  {
-    i--;
-  }
-  else
-  {
-    i=4
-  }
+    if(i !=0)
+    {
+      i--;
+    }
+    else
+    {
+      i=4
+    }
+    
+      slides[i].classList.add('active');
+
+
+
   
-    slides[i].classList.add('active');
+ 
     
     
 })
@@ -121,7 +137,7 @@ let repeat = function(activeClass){
       return;
     }
 
-  }, 2000)};
+  }, 5000)};
 
   repeater();
 
