@@ -173,7 +173,7 @@ if(channelCheck === "startrecord")
 }else if(channelCheck ==="startrecord4")
 {
   fourthchannel = [];
-  recorder1.style.color="red";
+  recorder4.style.color="red";
 }else
 {
   console.log(err);
