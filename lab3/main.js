@@ -74,7 +74,7 @@ const KeyToSound = {
 function onKeyPress(ev){
  const  sound = KeyToSound[ev.key]
  
-//  keys.forEach((k)=>{
+
   if(ev.key =="a")
   {
     keys[0].style.backgroundColor="#FAF1E6";
@@ -103,7 +103,7 @@ function onKeyPress(ev){
     keys[8].style.backgroundColor="#FAF1E6";
   }
 
-//  })
+
 
 
 
@@ -133,8 +133,6 @@ function onKeyUp(){
     k.style.backgroundColor="#525E75";
   })
 }
-
-
 
 
 function playSound(sound) {
