@@ -1,4 +1,5 @@
 document.addEventListener('keypress', onKeyPress);
+document.addEventListener('keyup', onKeyUp);
 
 let startrecordbtn = document.querySelector('#startrecord');
 let stoprecordbtn = document.querySelector('#stoprecord');
@@ -46,6 +47,12 @@ playrecordbtn4.addEventListener('click',playTrack)
 playcompletetrack.addEventListener('click', playall)
 
 
+let recorder1 = document.querySelector('.recorder1');
+let recorder2 = document.querySelector('.recorder2');
+let recorder3 = document.querySelector('.recorder3');
+let recorder4 = document.querySelector('.recorder4');
+let keys = document.querySelectorAll('.key');
+
 // const Sounds = {
 //     'clap':'clap',
 //     'hithat':'hithat'
@@ -66,6 +73,39 @@ const KeyToSound = {
 
 function onKeyPress(ev){
  const  sound = KeyToSound[ev.key]
+ 
+//  keys.forEach((k)=>{
+  if(ev.key =="a")
+  {
+    keys[0].style.backgroundColor="#FAF1E6";
+
+  }else if(ev.key =="s"){
+    keys[1].style.backgroundColor="#FAF1E6";
+  }else if(ev.key =="d"){
+    keys[2].style.backgroundColor="#FAF1E6";
+
+  }else if(ev.key =="f"){
+    keys[3].style.backgroundColor="#FAF1E6";
+
+  }else if(ev.key =="g"){
+    keys[4].style.backgroundColor="#FAF1E6";
+
+  }else if(ev.key =="h"){
+    keys[5].style.backgroundColor="#FAF1E6";
+    
+  }else if(ev.key =="j"){
+    keys[6].style.backgroundColor="#FAF1E6";
+
+  }else if(ev.key =="k"){
+    keys[7].style.backgroundColor="#FAF1E6";
+
+  }else if(ev.key =="l"){
+    keys[8].style.backgroundColor="#FAF1E6";
+  }
+
+//  })
+
+
 
   /* const key = event.key
     logika mapowania key -> sound 
@@ -85,6 +125,13 @@ switch (ev.key) {
 
 
   playSound(sound)
+}
+
+function onKeyUp(){
+
+  keys.forEach((k)=>{
+    k.style.backgroundColor="#525E75";
+  })
 }
 
 
@@ -116,15 +163,19 @@ function startrecording(){
 if(channelCheck === "startrecord")
 {
   firstchannel = [];
+  recorder1.style.color="red";
 }else if(channelCheck ==="startrecord2")
 {
   secondchannel =[];
+  recorder2.style.color="red";
 }else if(channelCheck ==="startrecord3")
 {
   thirdchannel = [];
+  recorder3.style.color="red";
 }else if(channelCheck ==="startrecord4")
 {
   fourthchannel = [];
+  recorder1.style.color="red";
 }else
 {
   console.log(err);
@@ -136,6 +187,9 @@ if(channelCheck === "startrecord")
   recordStatus = true;
 
   recordingStartTime = Date.now();
+
+
+  
   
 }
 
@@ -143,7 +197,12 @@ function stoprecording() {
   console.log("stop record!");
   recordStatus = false;
   
+  recorder1.style.color ="rgb(8, 163, 8)";
+  recorder2.style.color ="rgb(8, 163, 8)";
+  recorder3.style.color ="rgb(8, 163, 8)";
+  recorder4.style.color ="rgb(8, 163, 8)";
 }
+
 
 function playTrack(){
 

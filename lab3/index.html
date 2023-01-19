@@ -9,38 +9,68 @@
 <body>
  
 
-  <audio src="./sounds/clap.wav" controls id="clap" ></audio>
-  <audio src="./sounds/hihat.wav" controls id="hithat" ></audio>
-  <audio src="./sounds/kick.wav" controls id="kick" ></audio>
-  <audio src="./sounds/openhat.wav" controls id="openhat" ></audio>
-  <audio src="./sounds/boom.wav" controls id="boom" ></audio>
-  <audio src="./sounds/ride.wav" controls id="ride" ></audio>
-  <audio src="./sounds/snare.wav" controls id="snare" ></audio>
-  <audio src="./sounds/tom.wav" controls id="tom" ></audio>
-  <audio src="./sounds/tink.wav" controls id="tink" ></audio>
+  <audio src="./sounds/clap.wav" controls id="clap" class="audiotrack"></audio>
+  <audio src="./sounds/hihat.wav" controls id="hithat" class="audiotrack"></audio>
+  <audio src="./sounds/kick.wav" controls id="kick" class="audiotrack"></audio>
+  <audio src="./sounds/openhat.wav" controls id="openhat" class="audiotrack"></audio>
+  <audio src="./sounds/boom.wav" controls id="boom" class="audiotrack"></audio>
+  <audio src="./sounds/ride.wav" controls id="ride" class="audiotrack"></audio>
+  <audio src="./sounds/snare.wav" controls id="snare" class="audiotrack"></audio>
+  <audio src="./sounds/tom.wav" controls id="tom" class="audiotrack"></audio>
+  <audio src="./sounds/tink.wav" controls id="tink" class="audiotrack"></audio>
   <p>channel 1</p>
   <button id="startrecord">Record</button>
   <button id="stoprecord">Stop</button>
-  <button id="playtrack1">Play</button><br>
+  <button id="playtrack1">Play</button>
+  <i class="recorder1 fa-solid fa-record-vinyl"></i>
+  <br>
 
   <p>channel 2</p>
   <button id="startrecord2">Record</button>
   <button id="stoprecord2">Stop</button>
-  <button id="playtrack2">Play</button><br>
+  <button id="playtrack2">Play</button>
+  <i class="recorder2 fa-solid fa-record-vinyl"></i>
+  <br>
   
   <p>channel 3</p>
   <button id="startrecord3">Record</button>
   <button id="stoprecord3">Stop</button>
-  <button id="playtrack3">Play</button><br>
+  <button id="playtrack3">Play</button>
+  <i class="recorder3 fa-solid fa-record-vinyl"></i>
+  <br>
   
   <p>channel 4</p>
   <button id="startrecord4">Record</button>
   <button id="stoprecord4">Stop</button>
-  <button id="playtrack4">Play</button><br>
+  <button id="playtrack4">Play</button>
+  <i class="recorder4 fa-solid fa-record-vinyl"></i>
+  <br>
 
   <p>Play all</p>
   <button id="playall">PLAY TRACK</button>
+
+  <div id="keys">
+    <div class="key"><p>CLAP</p><p>A</p></div>
+
+    <div class="key"><p>HITHAT</p><p>S</p></div>
+
+    <div class="key"><p>KICK</p><p>D</p></div>
+
+    <div class="key"><p>OPENHAT</p><p>F</p></div>
+
+    <div class="key"><p>BOOM</p><p>G</p></div>
+
+    <div class="key"><p>RIDE</p><p>H</p></div>
+
+    <div class="key"><p>SNARE</p><p>J</p></div>
+
+    <div class="key"><p>TOM</p><p>K</p></div>
+
+    <div class="key"><p>TINK</p><p>L</p></div>
+
+  </div>
     
+    <script src="https://kit.fontawesome.com/5b83bdaa27.js" crossorigin="anonymous"></script>
     <script src="main.js" type="text/javascript"></script>
 </body>
 </html>
