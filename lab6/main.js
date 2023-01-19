@@ -5,7 +5,7 @@ let game = document.querySelector('#startgame');
 let map = document.querySelector('#map');
 let menu = document.querySelector('#menu');
 let timeListDiv = document.querySelector('#timeListDiv');
-
+let counterDiv = document.querySelector('#counter');
 
 let hourDigit = document.querySelector('#hour');
 let minuteDigit = document.querySelector('#minute');
@@ -123,6 +123,7 @@ game.addEventListener('click',start)
 function start(){
    startgame = true;
    counter = 0;
+   counterDiv.innerHTML ="";
    positionX = 350;
    positionY = 380;
 
@@ -150,21 +151,32 @@ function start(){
 
 function endGame(){
    
-   startgame = false;
-   stopTimer();
+   if(minute >=1){
+      startgame = false;
+      stopTimer();
+      console.log(counter);
+
+
+      console.log(`Your time: hour:${hour} minute:${minute} second:${second}`);
+      saveBestTime();
+      
+      
+      bestTime.forEach(e=>{
+            
+            let TimeList = document.createElement('li');
+            TimeList.className ="bestTimeListLi";
+            TimeList.innerText=`${e[0]}:${e[1]}:${e[2]}`;
+            bestTimeList.appendChild(TimeList);
+                                        
+     })
+
+     counterDiv.innerHTML ="Twoj wynik to: "+ counter;
+
+
+   }
    
-   console.log(`Your time: hour:${hour} minute:${minute} second:${second}`);
-   saveBestTime();
    
-   
-   bestTime.forEach(e=>{
-         
-         let TimeList = document.createElement('li');
-         TimeList.className ="bestTimeListLi";
-         TimeList.innerText=`${e[0]}:${e[1]}:${e[2]}`;
-         bestTimeList.appendChild(TimeList);
-                                     
-  })
+ 
   
 }
 
@@ -233,6 +245,10 @@ function returnTimerData(input) {
    
  }
 
+ function nextPos(){
+   hole.style.left=getRandomNum(0,730)+"px";
+   hole.style.top=getRandomNum(0,830)+"px";
+}
 
  function collisionDetection(){
    let holeCord = hole.getBoundingClientRect();
@@ -243,6 +259,10 @@ function returnTimerData(input) {
    // console.log(`HoleCordLeft: ${holeCord.left} + HallCordWidth: ${holeCord.width}`);
    // console.log(`HoleCordTop: ${holeCord.top} + HallCordHeight: ${holeCord.height}`);
   
+   if(minute>=1)
+   {
+      endGame();
+   }
 
    if(ballCord.left < (holeCord.left+ holeCord.width)-20 && ballCord.left + ballCord.width > holeCord.left +20 &&
    ballCord.top < (holeCord.top + holeCord.height)-20 && ballCord.top + ballCord.height > holeCord.top + 20) 
@@ -251,6 +271,10 @@ function returnTimerData(input) {
       hole.style.backgroundColor="rgb(30, 156, 30)";
       
          endGame();  
+
+       
+      nextPos();
+         
 
 
    } else
