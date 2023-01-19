@@ -10,6 +10,7 @@ let timeListDiv = document.querySelector('#timeListDiv');
 let hourDigit = document.querySelector('#hour');
 let minuteDigit = document.querySelector('#minute');
 let secondDigit = document.querySelector('#second');
+let counter = 0;
 
 const MaxX = map.clientWidth - ball.clientWidth;
 const MaxY = map.clientHeight - ball.clientHeight;
@@ -121,6 +122,7 @@ game.addEventListener('click',start)
 
 function start(){
    startgame = true;
+   counter = 0;
    positionX = 350;
    positionY = 380;
 
@@ -240,13 +242,16 @@ function returnTimerData(input) {
    // console.log(`BallCordTop: ${ballCord.top} + BallCordHeight: ${ballCord.height}`);
    // console.log(`HoleCordLeft: ${holeCord.left} + HallCordWidth: ${holeCord.width}`);
    // console.log(`HoleCordTop: ${holeCord.top} + HallCordHeight: ${holeCord.height}`);
+  
 
    if(ballCord.left < (holeCord.left+ holeCord.width)-20 && ballCord.left + ballCord.width > holeCord.left +20 &&
    ballCord.top < (holeCord.top + holeCord.height)-20 && ballCord.top + ballCord.height > holeCord.top + 20) 
    {
-      
+      counter++
       hole.style.backgroundColor="rgb(30, 156, 30)";
-      endGame();  
+      
+         endGame();  
+
 
    } else
    hole.style.backgroundColor="rgba(37, 37, 37, 0.973)";

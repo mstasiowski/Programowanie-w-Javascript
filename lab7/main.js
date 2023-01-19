@@ -1,12 +1,28 @@
 const startbtn = document.querySelector('#start');
 const resetbtn = document.querySelector('#resetbtn');
+const input1 = document.querySelector('#input1');
 
 startbtn.addEventListener('click',startGame)
 resetbtn.addEventListener('click',startGame)
+input1.value =22;
+
 
 function startGame(){
+
+  if(input1.value == "")
+  {
+    alert("Prosze wpisać liczbe kulek!!!!");
+  }else
+  {
+
+
   startbtn.style.display = "none";
   resetbtn.style.display = "block";
+  input1.style.top = 80+'px';
+  input1.style.left = 10+'px';
+  input1.style.height = 37+'px';
+  input1.style.width = 64+'px';
+  input1.style.color = 'black';
 
 
 const canvas = document.querySelector('#canvas');
@@ -19,7 +35,7 @@ canvas.height = window_height;
 canvas.width = window_width;
 
 canvas.style.background ="rgba(10, 20, 0, 0.35)";
-ballsCount = 10;
+ballsCount = input1.value;
 ballMinSpeed = 2;
 ballMaxSpeed = 8;
 
@@ -373,4 +389,5 @@ canvas.addEventListener('mousemove',(e)=>{
     getCursorPosition(canvas, e)
   })
 
+}
 }

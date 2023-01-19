@@ -27,6 +27,27 @@ position: absolute;
     color:#F5F5DC;
 }
 
+#input1{
+    position: absolute;
+    top: 50%;
+    left: 58%;
+    height: 70px;
+    width: 150px;
+    padding: 0;
+    text-align: center;
+    color: #F5F5DC;
+    font-size: 20px;
+    overflow: hidden;
+
+}
+
+::placeholder{
+    color: #F5F5DC;
+    font-size: 14px;
+    text-align: center;
+    overflow-y: hidden;
+}
+
 #resetbtn
 {
 position: absolute;
