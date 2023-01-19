@@ -1,7 +1,4 @@
-//TODO Prezentuje pogodę z róznych miejsc na świecie (temp, wilgotność, odpowiednia grafika względem pogody(chmurki, sloneczko, itp.))
-//TODO Wskazane przez usera miejsca powinny byc zapamiętane (localStorage), pogoda pobierana na nowo przy każdym wejściu do aplikacji.
-//TODO Można dodać/usunąć do 10 miejsc 
-//! USTAWIĆ ALERT JAK KTOŚ PODA BŁĘDNE MIASTO
+
 
 const API_KEY = `907faf56db9342f237f4d1acebd67c0e`;
 const API_URL = `https://api.openweathermap.org/data/2.5/weather?&appid=${API_KEY}&units=metric`;
@@ -96,9 +93,44 @@ class City{
    async getWeather(){
         const result = await fetch(`${API_URL}&q=${this.name}`)
         .then( response => response.json())
-        .then(data =>this.showWeather(data))
+        .then(data =>this.showWeather(data) )
+        .catch(error=>{alert(error)})
+
         return result
     }
+
+
+// async getWeather(){
+//     const result = await fetch(`${API_URL}&q=${this.name}`)
+    
+
+//     try{
+//         const result = await fetch(`${API_URL}&q=${this.name}`)
+//         .then( response => {
+    
+//             if(!response.ok)
+//             {
+//                 alert("Podałeś złe miasto!");
+//                 throw new Error("No city found");
+                
+//             }else
+//             {
+                
+//                 response.json()
+//                 .then(data =>this.showWeather(data) )
+//                 .catch(error=>{alert(error)})
+//                 return result
+//             }
+//         })
+
+//     }catch(e){
+//         alert("bład");
+//     }
+  
+// }
+
+
+
 
     showWeather(data){
         let temp = Math.round( data.main.temp);
