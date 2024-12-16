@@ -31,7 +31,7 @@ This repository contains several projects created for JavaScript programming cla
 
 ---
 
-## 🖼️ Zrzut ekranu / Screenshot
+## 🖼️ Zrzuty ekranu / Screenshots
 ![LAB1](https://github.com/mstasiowski/Programowanie-w-Javascript/blob/main/img/lab1.png?raw=true)
 
 ![LAB2](https://github.com/mstasiowski/Programowanie-w-Javascript/blob/main/img/lab2.png?raw=true)
